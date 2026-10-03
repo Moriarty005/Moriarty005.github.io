@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alejandro Muñoz Gutiérrez — Computer Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1115; --bg-2:#161922; --line:#2A2E38;
+    --ink:#ECEEF2; --ink-dim:#9BA3B0; --accent:#E8A33D; --accent-dim:#8A6428;
+    --radius:2px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;margin:0;padding:0}
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#F7F6F3; --bg-2:#EFEDE8; --line:#DAD6CC;
+      --ink:#181A1F; --ink-dim:#5C6270; --accent:#B4691E; --accent-dim:#D9A96B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F1115; --bg-2:#161922; --line:#2A2E38;
+    --ink:#ECEEF2; --ink-dim:#9BA3B0; --accent:#E8A33D; --accent-dim:#8A6428;
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.6;
+    min-height:100%;
+  }
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  h1,h2,h3{font-family:"Archivo",sans-serif; letter-spacing:-0.01em}
+  a{color:inherit}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px}
+  header.top{
+    position:sticky; top:0; top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    z-index:10;
+  }
+  header.top .wrap{display:flex; align-items:center; justify-content:space-between; height:56px}
+  header.top .id{font-family:"IBM Plex Mono",monospace; font-size:14px; color:var(--ink-dim)}
+  header.top nav{display:flex; gap:20px; font-size:14px}
+  header.top nav a{color:var(--ink-dim); text-decoration:none}
+  header.top nav a:hover{color:var(--ink)}
+
+  .hero{padding:72px 0 56px; border-bottom:1px solid var(--line)}
+  .hero .tag{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); margin-bottom:18px; display:flex; align-items:center; gap:8px}
+  .hero .tag .dot{width:7px; height:7px; border-radius:50%; background:var(--accent)}
+  .hero h1{font-size:clamp(32px,6vw,46px); line-height:1.12; font-weight:700; max-width:14ch}
+  .hero p.lede{margin-top:20px; max-width:52ch; color:var(--ink-dim); font-size:18px}
+  .hero .links{margin-top:32px; display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    font-family:"IBM Plex Mono",monospace; font-size:13px; padding:10px 16px;
+    border:1px solid var(--line); border-radius:var(--radius); text-decoration:none;
+    transition:border-color .15s ease;
+  }
+  .btn.primary{border-color:var(--accent); color:var(--accent)}
+  .btn:hover{border-color:var(--ink-dim)}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink-dim); margin-bottom:14px}
+  section h2{font-size:26px; margin-bottom:20px; max-width:22ch}
+  .about p{color:var(--ink-dim); max-width:62ch; margin-bottom:14px}
+  .about p:last-child{margin-bottom:0}
+
+  .project{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; margin-bottom:16px; background:var(--bg-2);
+  }
+  .project:last-child{margin-bottom:0}
+  .project h3{font-size:19px; margin-bottom:6px}
+  .project .role{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--accent); margin-bottom:12px}
+  .project p{color:var(--ink-dim); font-size:15px; margin-bottom:14px}
+  .project .stack{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+  .project .stack span{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:var(--radius); padding:3px 8px;
+  }
+  .project .plinks{display:flex; gap:16px; font-size:14px}
+  .project .plinks a{text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px}
+  .project .plinks a:hover{text-decoration-color:var(--accent)}
+  .placeholder-note{font-size:12px; color:var(--ink-dim); font-style:italic}
+
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px}
+  .skills-grid .cat h4{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--accent); margin-bottom:8px; text-transform:none}
+  .skills-grid .cat p{color:var(--ink-dim); font-size:15px; line-height:1.7}
+  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr} }
+
+  .contact{text-align:left}
+  .contact p{color:var(--ink-dim); max-width:50ch; margin-bottom:24px}
+  .contact-links{display:flex; flex-direction:column; gap:10px; font-family:"IBM Plex Mono",monospace; font-size:15px}
+  .contact-links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; width:fit-content}
+  .contact-links a:hover{border-color:var(--accent)}
+
+  footer{padding:28px 0; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim)}
+
+  ::selection{background:var(--accent); color:var(--bg)}
+  a:focus-visible, .btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="id mono">A. Muñoz Gutiérrez</div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span>Open to new opportunities</div>
+    <h1>Computer engineer specialized in AI system security</h1>
+    <p class="lede">Alejandro Muñoz Gutiérrez. Computer Engineering graduate, University of Granada. My profile is focused on backend development and AI but I also have knowledge about servers and cibersecurity</p>
+    <div class="links">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="#" aria-label="Download CV as PDF">Download CV</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="eyebrow">About me</div>
+    <h2>Background</h2>
+    <p>Computer Engineering graduate from the University of Granada.
+       My final-year thesis focuses on red teaming generative AI assistants embedded in
+        corporate SaaS environments, specifically Microsoft 365 Copilot.</p>
+    <p>That work led to GAIHF (Generative AI Hardening Framework), a security
+       hardening tool built on the findings from my PyRIT red-teaming campaigns.
+        I'm interested in the intersection of development and security: understanding
+         how systems break so I can help build them better.</p>
+    <p>Looking for my first role as a junior developer or junior cybersecurity analyst.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Featured projects</div>
+    <h2>Work and findings</h2>
+
+    <div class="project">
+      <h3>GAIHF — Generative AI Hardening Framework</h3>
+      <div class="role mono">Computer science degree final-year thesis · Sole author</div>
+      <p>AI assistants built into workplace tools, such as Microsoft 365 Copilot or Google Gemini, can access emails, documents, and meetings across an entire organization. That makes them very useful, but it also creates a risk: what if someone tricks the assistant into revealing confidential information they shouldn't have access to? In my Bachelor's Thesis in Computer Engineering (University of Granada), I study this problem using a technique called red teaming, which means attacking a system in a controlled way to uncover its weaknesses before a real attacker does.</p>
+      <p>As a result, I developed GAIHF (Generative AI Hardening Framework), a Python tool that automates the process: it takes the results of the attack tests, identifies the security flaws, scores them by severity, and proposes concrete measures to fix them. It also generates clear reports for both technical and management teams, and shows how security improves over time. Its recommendations are based on recognized industry standards (CIS Controls, MITRE ATLAS, and the OWASP Top 10 for LLMs), so any company can use them as a guide. For this project I worked with Python, Azure OpenAI, PyRIT (Microsoft's framework for AI security testing), and Jupyter Notebooks, and the tool includes a complete test suite to ensure its reliability.</p>
+      <div class="stack">
+        <span>Python</span><span>PyRIT</span><span>Azure OpenAI</span><span>AI security</span>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/Moriarty005/GAIHF">Repository</a>
+        <a href="#">Thesis paper</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>AssistanceSupport</h3>
+      <div class="role mono">Higher technical degree final proyect</div>
+      <p>AssistanceSupport is a system designed for advanced academic settings such as upper secondary school (bachillerato) or university. Its goal is to eliminate the process teachers have to carry out to verify students' physical attendance, commonly known as "taking attendance" or "calling the roll."</p>
+
+      <p>It would work as follows: the student enters the classroom and, through their AssistanceSupport app account, connects via the Bluetooth protocol (IEEE 802.15) to the Raspberry Pi, sending the student's data to it over that protocol. The Raspberry Pi, which is always connected to a server written in Python that in turn connects to a database, would then record in that database, with the exact date and time, the student who has entered the class. In this way, the student's attendance is registered for a specific classroom, a specific subject, and a specific date and time.</p>
+      <div class="stack">
+        <span>Python</span><span>RasperryPi</span><span>Bluetooth</span>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/Moriarty005/AssistanceSupport">Repository</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>TicketIn</h3>
+      <div class="role mono">Accesibility technologies project</div>
+      <p>This was a small project to test how does Neural Networks works. The goal of this project was to create a phone app that allows the user buy and manage tickets for sports or musical events applying accesibility functions.</p>
+      <p></p>
+      <div class="stack">
+        <span>Python</span><span>Kivy</span><span>Neural networks</span>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/Moriarty005/TiketIn">Repository</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Tools and technologies</div>
+    <h2>Technical skills</h2>
+    <div class="skills-grid">
+      <div class="cat">
+        <h4 class="mono">Languages</h4>
+        <p>C, C++, C#, Python, Java, </p>
+      </div>
+      <div class="cat">
+        <h4 class="mono">AI & security</h4>
+        <p>PyRIT, Azure OpenAI, LLM red teaming, AI system hardening</p>
+      </div>
+      <div class="cat">
+        <h4 class="mono">Tools</h4>
+        <p>Git, Jupyter, Docker, Nmap</p>
+      </div>
+      <div class="cat">
+        <h4 class="mono">Focus</h4>
+        <p>Backend development, offensive generative-AI security</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none">
+  <div class="wrap contact">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's talk</h2>
+    <p>Open to opportunities as a junior developer or junior cybersecurity analyst. Reach out or find me on these profiles.</p>
+    <div class="contact-links">
+      <a href="mailto:alejandro.mg.0505@gmail.com">alejandro.mg.0505@gmail.com</a>
+      <a href="www.linkedin.com/in/alejandromunozgutierrez">www.linkedin.com/in/alejandromunozgutierrez</a>
+      <a href="https://github.com/Moriarty005">https://github.com/Moriarty005</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Alejandro Muñoz Gutiérrez · Granada</div>
+</footer>
+
+</body>
+</html>
