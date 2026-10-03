@@ -52,9 +52,14 @@
   header.top nav a:hover{color:var(--ink)}
 
   .hero{padding:72px 0 56px; border-bottom:1px solid var(--line)}
-  .hero .tag{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); margin-bottom:18px; display:flex; align-items:center; gap:8px}
+  .hero-top{display:flex; align-items:center; gap:24px; flex-wrap:wrap}
+  .hero-photo{
+    width:96px; height:96px; border-radius:50%; object-fit:cover; flex-shrink:0;
+    border:2px solid var(--accent);
+  }
+  .hero .tag{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); margin-bottom:10px; display:flex; align-items:center; gap:8px}
   .hero .tag .dot{width:7px; height:7px; border-radius:50%; background:var(--accent)}
-  .hero h1{font-size:clamp(32px,6vw,46px); line-height:1.12; font-weight:700; max-width:14ch}
+  .hero h1{font-size:clamp(32px,6vw,46px); line-height:1.12; font-weight:700; max-width:14ch; margin-top:24px}
   .hero p.lede{margin-top:20px; max-width:52ch; color:var(--ink-dim); font-size:18px}
   .hero .links{margin-top:32px; display:flex; gap:12px; flex-wrap:wrap}
   .btn{
@@ -122,7 +127,10 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="tag"><span class="dot"></span>Open to new opportunities</div>
+    <div class="hero-top">
+      <img class="hero-photo" src="profile.jpg" alt="Alejandro Muñoz Gutiérrez">
+      <div class="tag"><span class="dot"></span>Open to new opportunities</div>
+    </div>
     <h1>Computer engineer specialized in AI system security</h1>
     <p class="lede">Alejandro Muñoz Gutiérrez. Computer Engineering graduate, University of Granada. My profile is focused on backend development and AI but I also have knowledge about servers and cibersecurity</p>
     <div class="links">
